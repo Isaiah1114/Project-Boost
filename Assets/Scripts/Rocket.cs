@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
+    GameObject levelManager = new GameObject();
     Rigidbody rigidBody;
     AudioSource audio;
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
-    [SerializeField] float levelLoadDelay = 2f;
-
+    
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip win;
@@ -70,7 +70,7 @@ public class Rocket : MonoBehaviour
         audio.Stop();
         audio.PlayOneShot(death);
         deathParticles.Play();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        
     }
 
     private void StartFinishSequence()
@@ -79,20 +79,10 @@ public class Rocket : MonoBehaviour
         audio.Stop();
         audio.PlayOneShot(win);
         winParticles.Play();
-        Invoke("LoadnextLevel", levelLoadDelay);
+        
     }
 
-    private void LoadFirstLevel()
-    {
-        SceneManager.LoadScene(0);
-    }
 
-    private void LoadnextLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex); // todo allow fro more than 2 levels
-    }
 
     private void RespondToRotateInput()
     {
@@ -134,7 +124,9 @@ public class Rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.L))
         {
-            LoadnextLevel();
+
+            
+            levelManager.LoadnextLevel();
         }
 
         if (Input.GetKey(KeyCode.C))
