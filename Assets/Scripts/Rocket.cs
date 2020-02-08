@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Rocket : MonoBehaviour
 {
-    GameObject levelManager = new GameObject();
+    public GameObject levelManager = new GameObject();
     Rigidbody rigidBody;
     AudioSource audio;
     [SerializeField] float rcsThrust = 100f;
@@ -26,6 +27,7 @@ public class Rocket : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         audio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -37,10 +39,7 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
 
         }
-        if (Debug.isDebugBuild)
-        {
-            RespondToDebugInput();
-        }
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -79,6 +78,7 @@ public class Rocket : MonoBehaviour
         audio.Stop();
         audio.PlayOneShot(win);
         winParticles.Play();
+        levelManager.GetComponent<LevelManager>().invokeLevelLoad();
         
     }
 
@@ -119,21 +119,6 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    void RespondToDebugInput()
-    {
-
-        if (Input.GetKey(KeyCode.L))
-        {
-
-            
-            levelManager.LoadnextLevel();
-        }
-
-        if (Input.GetKey(KeyCode.C))
-        {
-            collisionsDisabled = !collisionsDisabled;
-        }
-    }
 
     private void Thrust()
     {

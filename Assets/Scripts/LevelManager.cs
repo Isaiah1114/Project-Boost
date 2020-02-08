@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+
+    [SerializeField] float levelLoadDelay = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +18,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
 
-
-
+       
         
     }
 
@@ -25,16 +27,29 @@ public class LevelManager : MonoBehaviour
         Invoke("LoadnextLevel", levelLoadDelay);
     }
 
-    private void LoadFirstLevel()
+    public void LoadFirstLevel()
     {
         SceneManager.LoadScene(0);
     }
 
 
-    private void LoadnextLevel()
+    public void LoadnextLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex); // todo allow fro more than 2 levels
+        SceneManager.LoadScene(nextSceneIndex); 
     }
+
+    void LevelDebug()
+    {
+
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadnextLevel();
+
+        }
+       
+    }
+
+
 }
