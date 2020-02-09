@@ -5,9 +5,11 @@ using UnityEngine;
 public class ShipSelector : MonoBehaviour
 {
     public GameObject ship = new GameObject();
+    public GameObject dispaySpawn = new GameObject();
 
     public void SelectSubmarine()
     {
-        Instantiate(ship, transform.parent);
+        Instantiate(ship, dispaySpawn.transform);
+        
     }
 }
