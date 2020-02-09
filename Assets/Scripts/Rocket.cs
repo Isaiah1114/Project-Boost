@@ -27,7 +27,6 @@ public class Rocket : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         audio = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
@@ -37,9 +36,7 @@ public class Rocket : MonoBehaviour
         {
             RespondToRotateInput();
             RespondToThrustInput();
-
-        }
-        
+        }  
     }
 
     void OnCollisionEnter(Collision collision)
@@ -69,7 +66,7 @@ public class Rocket : MonoBehaviour
         audio.Stop();
         audio.PlayOneShot(death);
         deathParticles.Play();
-        
+        levelManager.GetComponent<LevelManager>().invokeLoadFirstLevel();
     }
 
     private void StartFinishSequence()
@@ -82,12 +79,9 @@ public class Rocket : MonoBehaviour
         
     }
 
-
-
     private void RespondToRotateInput()
     {
 
-        
         float rotationThisFrame = rcsThrust * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.A))
@@ -118,7 +112,6 @@ public class Rocket : MonoBehaviour
             mainEngineParticles.Stop();
         }
     }
-
 
     private void Thrust()
     {

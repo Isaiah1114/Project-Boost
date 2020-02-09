@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0a82ca6ab0473c640b22043ae2791f41,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -243,6 +244,25 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 2424274344020198015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &214350384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1444849137849988487, guid: ba2f72dbfc3ae7844b7b1a2c86c68549,
+    type: 3}
+  m_PrefabInstance: {fileID: 8025787536642509768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &214350389
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214350384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.83, y: 4.88, z: 1}
+  m_Center: {x: 0, y: 1.23, z: 0}
 --- !u!1 &222950272
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe571a1dc2bf322448060c5f109fac0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoadDelay: 2
 --- !u!4 &238326547
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,6 +2499,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 1444849137849988505, guid: ba2f72dbfc3ae7844b7b1a2c86c68549,
+        type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 238326545}
+    - target: {fileID: 2179765177295499319, guid: ba2f72dbfc3ae7844b7b1a2c86c68549,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5dff3f737336aa4998cba602a1ed5ff, type: 2}
     - target: {fileID: 6031881838688157516, guid: ba2f72dbfc3ae7844b7b1a2c86c68549,
         type: 3}
       propertyPath: m_LocalPosition.x

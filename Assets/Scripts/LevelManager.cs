@@ -22,16 +22,20 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public void invokeLevelLoad()
+    public void invokeLoadFirstLevel()
     {
-        Invoke("LoadnextLevel", levelLoadDelay);
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
+    public void invokeLevelLoad()
+    {
+        Invoke("LoadnextLevel", levelLoadDelay);
+    }
 
     public void LoadnextLevel()
     {
