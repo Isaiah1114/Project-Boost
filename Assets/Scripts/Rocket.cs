@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Rocket : MonoBehaviour
 {
+    public GameObject levelManager = new GameObject();
     Rigidbody rigidBody;
     AudioSource audio;
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
-    [SerializeField] float levelLoadDelay = 2f;
-
+    
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip win;
@@ -35,12 +36,7 @@ public class Rocket : MonoBehaviour
         {
             RespondToRotateInput();
             RespondToThrustInput();
-
-        }
-        if (Debug.isDebugBuild)
-        {
-            RespondToDebugInput();
-        }
+        }  
     }
 
     void OnCollisionEnter(Collision collision)
@@ -70,7 +66,7 @@ public class Rocket : MonoBehaviour
         audio.Stop();
         audio.PlayOneShot(death);
         deathParticles.Play();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        levelManager.GetComponent<LevelManager>().invokeLoadFirstLevel();
     }
 
     private void StartFinishSequence()
@@ -79,25 +75,13 @@ public class Rocket : MonoBehaviour
         audio.Stop();
         audio.PlayOneShot(win);
         winParticles.Play();
-        Invoke("LoadnextLevel", levelLoadDelay);
-    }
-
-    private void LoadFirstLevel()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    private void LoadnextLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex); // todo allow fro more than 2 levels
+        levelManager.GetComponent<LevelManager>().invokeLevelLoad();
+        
     }
 
     private void RespondToRotateInput()
     {
 
-        
         float rotationThisFrame = rcsThrust * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.A))
@@ -126,20 +110,6 @@ public class Rocket : MonoBehaviour
         {
             audio.Stop();
             mainEngineParticles.Stop();
-        }
-    }
-
-    void RespondToDebugInput()
-    {
-
-        if (Input.GetKey(KeyCode.L))
-        {
-            LoadnextLevel();
-        }
-
-        if (Input.GetKey(KeyCode.C))
-        {
-            collisionsDisabled = !collisionsDisabled;
         }
     }
 
