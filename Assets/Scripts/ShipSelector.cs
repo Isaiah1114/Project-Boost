@@ -32,6 +32,11 @@ public class ShipSelector : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        activeShip = realShip;
+    }
+
 
     public void SelectSubmarine()
     {

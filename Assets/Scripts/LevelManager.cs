@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject spawnPoint;
+    //public GameObject spawnPoint;
     [SerializeField] float levelLoadDelay = 2f;
     public GameObject Ship = new GameObject();
-    enum shipStatus {started, notStarted }
-    shipStatus ship = shipStatus.started;
+    public enum shipStatus {started, notStarted }
+    public shipStatus ship = shipStatus.started;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,10 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ship == shipStatus.started) {
+        
+
+        if (ship == shipStatus.started)
+        {
             spawnActiveShip();
         }
     }
@@ -36,6 +39,7 @@ public class LevelManager : MonoBehaviour
 
     public void invokeLevelLoad()
     {
+        
         Invoke("LoadnextLevel", levelLoadDelay);
     }
 
@@ -43,7 +47,8 @@ public class LevelManager : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex); 
+        SceneManager.LoadScene(nextSceneIndex);
+        ship = shipStatus.started;
     }
 
     void LevelDebug()
@@ -60,6 +65,7 @@ public class LevelManager : MonoBehaviour
     public void spawnActiveShip()
     {
         GameObject test = GameObject.Find("ShipSelector");
+        GameObject spawnPoint = GameObject.Find("SpawnPoint");
         Ship = test.GetComponent<ShipSelector>().activeShip;
         Instantiate(Ship, spawnPoint.transform);
         ship = shipStatus.notStarted;
