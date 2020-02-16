@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8318624836318858834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8318624836318858836}
+  - component: {fileID: 8318624836318858837}
+  m_Layer: 0
+  m_Name: ShipSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8318624836318858836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318624836318858834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 721, y: 593, z: -146.35168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8318624836318858837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318624836318858834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb7ee81f13fbf042b3ce1f572443289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipPlaceholder: {fileID: 4139400246542953531, guid: 7745ca91ce8836d4bb3ee4416927f7aa,
+    type: 3}
+  submarinePlaceholder: {fileID: 2401413316927816287, guid: 5711343be785085458dd817ae0fa0e4d,
+    type: 3}
+  realShip: {fileID: 1444849137849988487, guid: ba2f72dbfc3ae7844b7b1a2c86c68549,
+    type: 3}
+  realSubmarine: {fileID: 9061020709108080173, guid: 58f01c6b84f5bf44f84b4ae5fb619763,
+    type: 3}
+  canvas: {fileID: 0}
+  activeShip: {fileID: 0}
